@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aly Sadek's mechanical engineering portfolio: rocketry, materials research, design, manufacturing, and technical experience.">
+  <title>Aly Sadek | Mechanical Engineering Portfolio</title>
+  <style>
+    :root { --ink:#eaf1f8; --muted:#a7b6c7; --bg:#071019; --panel:#102030; --line:rgba(255,255,255,.11); --blue:#62c8ff; --green:#78e4b6; --max:1100px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 12% 0%,rgba(98,200,255,.12),transparent 28rem),var(--bg); font:15.5px/1.62 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:inherit; }
+    .wrap { width:min(calc(100% - 36px),var(--max)); margin-inline:auto; }
+    nav { position:sticky; top:0; z-index:10; background:rgba(7,16,25,.88); backdrop-filter:blur(16px); border-bottom:1px solid var(--line); }
+    .nav-inner { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { font-weight:850; letter-spacing:.05em; text-decoration:none; }
+    .brand span { color:var(--blue); }
+    .nav-links { display:flex; flex-wrap:wrap; gap:20px; }
+    .nav-links a { color:var(--muted); font-size:.9rem; text-decoration:none; }
+    .nav-links a:hover { color:white; }
+    header { padding:68px 0 58px; border-bottom:1px solid var(--line); }
+    .eyebrow,.label { margin:0 0 9px; color:var(--green); font-size:.77rem; font-weight:850; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(3rem,7vw,5.4rem); line-height:.95; letter-spacing:-.055em; }
+    .role { margin:14px 0 0; color:var(--blue); font-size:clamp(1.1rem,2.5vw,1.45rem); font-weight:700; }
+    .lead { max-width:780px; margin:18px 0 24px; color:var(--muted); font-size:1.08rem; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:43px; padding:0 17px; border:1px solid var(--line); border-radius:999px; text-decoration:none; font-weight:750; transition:.18s ease; }
+    .button.primary { color:#041018; background:var(--blue); border-color:var(--blue); }
+    .button:hover { transform:translateY(-2px); border-color:var(--blue); }
+    main { padding:62px 0 75px; }
+    section { scroll-margin-top:84px; margin-bottom:72px; }
+    .section-head { display:grid; grid-template-columns:240px 1fr; gap:28px; margin-bottom:22px; }
+    .section-head h2 { margin:0; font-size:clamp(1.8rem,4vw,2.8rem); line-height:1.05; letter-spacing:-.04em; }
+    .section-head p { max-width:700px; margin:3px 0 0; color:var(--muted); }
+    .window { overflow:hidden; background:linear-gradient(145deg,rgba(20,38,56,.97),rgba(12,25,37,.98)); border:1px solid var(--line); border-radius:19px; box-shadow:0 18px 48px rgba(0,0,0,.20); }
+    .window-bar { display:flex; align-items:center; gap:7px; height:38px; padding:0 16px; background:rgba(255,255,255,.035); border-bottom:1px solid var(--line); }
+    .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.22); }
+    .window-body { padding:28px; }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:16px; }
+    .span-8 { grid-column:span 8; } .span-7 { grid-column:span 7; } .span-5 { grid-column:span 5; } .span-4 { grid-column:span 4; }
+    h3 { margin:0 0 8px; font-size:1.28rem; line-height:1.25; }
+    p { margin-top:0; }
+    .window p,.window li { color:var(--muted); }
+    ul { margin:13px 0 0; padding-left:20px; }
+    li+li { margin-top:7px; }
+    strong { color:var(--ink); }
+    .metric { margin:3px 0 8px; color:var(--blue); font-size:2.25rem; font-weight:850; line-height:1; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:17px; }
+    .tag { padding:6px 10px; color:#d1deea; background:rgba(255,255,255,.05); border:1px solid var(--line); border-radius:999px; font-size:.8rem; }
+    .internship-title { display:flex; justify-content:space-between; gap:20px; align-items:flex-start; margin-bottom:18px; }
+    .status { flex:none; padding:6px 10px; color:#052015; background:var(--green); border-radius:999px; font-size:.75rem; font-weight:850; text-transform:uppercase; }
+    .research-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .research-block { padding:20px; background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:14px; }
+    .research-block p:last-child { margin-bottom:0; }
+    .video { position:relative; overflow:hidden; aspect-ratio:16/9; margin-top:20px; border-radius:14px; background:#000; }
+    .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+    .timeline { display:grid; }
+    .row { display:grid; grid-template-columns:150px 1fr; gap:22px; padding:21px 0; border-top:1px solid var(--line); }
+    .row:first-child { padding-top:0; border-top:0; } .row:last-child { padding-bottom:0; }
+    .row time { color:var(--blue); font-size:.88rem; font-weight:800; }
+    .row p:last-child { margin-bottom:0; }
+    .contact { padding:38px 28px; text-align:center; }
+    .contact h2 { margin:0 0 10px; font-size:clamp(2rem,5vw,3.4rem); letter-spacing:-.045em; }
+    .contact .lead { margin:0 auto 22px; }
+    footer { padding:22px 0 34px; color:var(--muted); border-top:1px solid var(--line); font-size:.88rem; }
+    @media (max-width:760px) {
+      .nav-inner { align-items:flex-start; flex-direction:column; padding:13px 0; }
+      .nav-links { gap:13px; }
+      header { padding:50px 0 44px; }
+      main { padding-top:48px; }
+      .section-head,.row,.research-grid { grid-template-columns:1fr; }
+      .section-head { gap:8px; }
+      .span-4,.span-5,.span-7,.span-8 { grid-column:1/-1; }
+      .internship-title { display:block; }
+      .status { display:inline-block; margin-top:7px; }
+      .window-body { padding:22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main navigation">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">ALY<span>.</span></a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a><a href="#research">Research</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top">
+    <div class="wrap">
+      <p class="eyebrow">Engineering Portfolio</p>
+      <h1>Aly Sadek</h1>
+      <p class="role">Mechanical Engineering Student · CSULB</p>
+      <p class="lead">Experience in liquid-propellant rocket recovery, battery and materials research, direct lithium extraction, CAD, manufacturing, experimental design, and field operations.</p>
+      <div class="actions">
+        <a class="button primary" href="#projects">View work</a><a class="button" href="mailto:Alyksadek@outlook.com">Email</a><a class="button" href="https://www.linkedin.com/in/alysadek" target="_blank" rel="noreferrer">LinkedIn</a><a class="button" href="Resume.pdf" target="_blank">Résumé</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="projects">
+      <div class="section-head"><h2>Engineering projects</h2><p>Each project is kept in its own block so design decisions, technical work, testing, and results remain clear. Additional projects can be added here without changing the rest of the page.</p></div>
+      <div class="grid">
+        <article class="window span-8">
+          <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="window-body">
+            <p class="label">Project 01 · CSULB Beach Launch Team</p>
+            <h3>Theseus Liquid-Propellant Rocket Recovery System</h3>
+            <p>Modified Theseus's <strong>dual-drogue, single-main parachute recovery system</strong> and redesigned the avionics bay to increase the main parachute diameter from 4 to 6 inches through CAD modeling, fabrication, and assembly.</p>
+            <ul>
+              <li>Supported a three-day field deployment and launch at Friends of Amateur Rocketry.</li>
+              <li>When main-chute deployment fractured a structural weak point, oversized safety margins in the dual drogues recovered approximately 85% of the rocket intact.</li>
+              <li>Promoted to <strong>GNC/Recovery Co-lead</strong> to design a new recovery system from the ground up, replacing a legacy architecture adapted for more than six years.</li>
+            </ul>
+            <div class="tags"><span class="tag">SolidWorks</span><span class="tag">CAD</span><span class="tag">Fabrication</span><span class="tag">Assembly</span><span class="tag">Recovery systems</span><span class="tag">Field testing</span></div>
+          </div>
+        </article>
+        <aside class="window span-4">
+          <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="window-body"><p class="label">Current role</p><h3>GNC/Recovery Co-lead</h3><p>September 2025 - Present</p><div class="metric">2027</div><p>Targeting the first launch of the redesigned recovery architecture by early/mid 2027.</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="section-head"><h2>NSF research internship</h2><p>A competitive undergraduate research experience in materials science, chemical engineering, and energy sustainability.</p></div>
+      <article class="window">
+        <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="window-body">
+          <div class="internship-title">
+            <div><p class="label">MacREU · University of California, Riverside · Summer 2025</p><h3>Selected Undergraduate Research Intern</h3><p>Selected to participate in an <strong>NSF-funded Research Experiences for Undergraduates program</strong>. Worked with graduate researchers and principal investigators to design experiments, prepare chemical solutions, operate characterization equipment, analyze results, refine procedures, and communicate findings.</p></div>
+            <span class="status">NSF Funded</span>
+          </div>
+          <div class="research-grid">
+            <div class="research-block">
+              <p class="label">Research focus 01</p><h3>Sodium-Ion Battery Anodes</h3>
+              <p>Compared flake-like and spherical commercial hard carbons to connect particle shape, physical structure, and sodium-storage behavior for future anode development.</p>
+              <ul><li>Applied SEM, TEM, Raman spectroscopy, and XRD for materials characterization.</li><li>Analyzed cycling behavior and theoretical capacity under practical charge/discharge conditions.</li><li>Found spherical hard carbon showed stronger capacity retention, faster diffusion, and greater stability than flake-like samples.</li></ul>
+            </div>
+            <div class="research-block">
+              <p class="label">Research focus 02</p><h3>Direct Lithium Extraction</h3>
+              <p>Led experiments using aluminum hydroxide as a host for lithium uptake from synthetic geothermal brine, with the goal of developing scalable domestic lithium-recovery methods.</p>
+              <ul><li>Screened reaction mass ratios and temperatures to evaluate extraction efficiency.</li><li>Tested selectivity against competing ions and prepared samples for ICP-OES analysis.</li><li>Investigated lithium recovery through layered-double-hydroxide conversion and water rinsing.</li></ul>
+            </div>
+          </div>
+          <div class="research-grid" style="margin-top:14px">
+            <div class="research-block"><p class="label">Technical communication</p><h3>Presented at Two Research Conferences</h3><p>Presented findings at the <strong>UC Riverside Undergraduate Research Symposium</strong> and the <strong>Southern California Conferences for Undergraduate Research (SCCUR)</strong>.</p></div>
+            <div class="research-block"><p class="label">Methods</p><div class="tags"><span class="tag">SEM</span><span class="tag">TEM</span><span class="tag">Raman</span><span class="tag">XRD</span><span class="tag">ICP-OES</span><span class="tag">Electrochemical analysis</span><span class="tag">Chemical preparation</span><span class="tag">Data analysis</span></div></div>
+          </div>
+          <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/vmhwG1YoJz8" title="Aly Sadek MacREU research internship presentation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience">
+      <div class="section-head"><h2>Experience &amp; education</h2><p>Technical experience supported by engineering coursework, machining and prototyping tools, project coordination, and safety-focused field work.</p></div>
+      <div class="grid">
+        <article class="window span-7">
+          <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="window-body timeline">
+            <div class="row"><time>2025 - 2027</time><div><h3>B.S. Mechanical Engineering · CSULB</h3><p>Coursework includes Deformable Bodies, Dynamics, Composite Materials, and Manufacturing Processes.</p></div></div>
+            <div class="row"><time>2022 - 2025</time><div><h3>A.A. Liberal Arts, Math and Science · MSJC</h3><p>Coursework included Statics, SolidWorks, and Electricity and Magnetism. Named to the President's Honors List.</p></div></div>
+            <div class="row"><time>2023 - 2025</time><div><h3>Hot Air Balloon Ground Crew</h3><p>Managed equipment setup, launch, chase, and landing operations; delivered safety briefings; and maintained burners, fuel components, and balloon fabric.</p></div></div>
+            <div class="row"><time>2022 - Present</time><div><h3>PADI Rescue Scuba Diver</h3><p>Rescue Diver and Nitrox certified with 70+ logged dives applying safety, risk management, and technical procedures in high-consequence environments.</p></div></div>
+          </div>
+        </article>
+        <aside class="window span-5">
+          <div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="window-body"><p class="label">Technical skills</p><h3>Design, Manufacturing &amp; Analysis</h3><div class="tags"><span class="tag">SolidWorks</span><span class="tag">AutoCAD</span><span class="tag">MATLAB</span><span class="tag">GD&amp;T</span><span class="tag">CNC mill &amp; lathe</span><span class="tag">Manual machining</span><span class="tag">3D printing</span><span class="tag">Microsoft 365</span><span class="tag">Experimental design</span><span class="tag">Data analysis</span><span class="tag">Technical documentation</span><span class="tag">Project coordination</span></div><p class="label" style="margin-top:26px">Languages</p><p><strong>English and Arabic</strong> · Native or bilingual proficiency</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="window contact"><p class="eyebrow">Contact</p><h2>Let’s build something useful.</h2><p class="lead">Open to engineering internships involving design, testing, manufacturing, research, and hands-on problem solving.</p><div class="actions" style="justify-content:center"><a class="button primary" href="mailto:Alyksadek@outlook.com">Alyksadek@outlook.com</a><a class="button" href="https://www.linkedin.com/in/alysadek" target="_blank" rel="noreferrer">View LinkedIn</a></div></div>
+    </section>
+  </main>
+  <footer><div class="wrap">© 2026 Aly Sadek · Mechanical Engineering Portfolio</div></footer>
+</body>
+</html>
