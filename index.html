@@ -50,8 +50,9 @@
     section { scroll-margin-top:88px; margin-bottom:78px; }
     .section-head { display:grid; grid-template-columns:300px 1fr; gap:32px; margin-bottom:24px; }
     .section-head h2 { margin:0; font-size:clamp(1.8rem,4vw,2.7rem); line-height:1.05; letter-spacing:-.035em; font-weight:500; }
-    .section-head p { max-width:720px; margin:4px 0 0; color:var(--navy-soft); }
-    .experience-head { grid-template-columns:420px 1fr; }
+    .section-head p { max-width:720px; margin:4px 0 0; justify-self:end; text-align:right; color:var(--navy-soft); }
+    .experience-head { grid-template-columns:max-content minmax(0,1fr); align-items:center; }
+    .experience-head p { margin:0; }
     .experience-head h2 { white-space:nowrap; }
     .experience-list { border-top:1px solid var(--navy); }
     .experience-entry { display:grid; grid-template-columns:190px 1fr; gap:32px; padding:30px 0; border-bottom:1px solid var(--line); }
@@ -62,8 +63,8 @@
     .experience-content p { max-width:820px; margin:0 0 12px; color:var(--navy-soft); }
     .experience-content ul { max-width:850px; margin:11px 0 0; padding-left:20px; }
     .experience-content li+li { margin-top:6px; }
-    .video-label { margin:34px 0 9px; color:var(--amber); font-size:.75rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; }
-    .video { position:relative; overflow:hidden; width:76%; aspect-ratio:16/9; border:1px solid var(--navy); background:var(--navy); }
+    .experience-content .video-label { margin:34px 0 9px; color:var(--amber); font-size:.75rem; font-weight:600; letter-spacing:.11em; text-transform:uppercase; }
+    .video { position:relative; overflow:hidden; width:75%; margin-inline:auto; aspect-ratio:16/9; border:1px solid var(--navy); background:var(--navy); }
     .video iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
     .folder-list { border-top:1px solid var(--navy); }
     details.folder { border-bottom:1px solid var(--navy); }
@@ -147,6 +148,76 @@
       .contact { grid-template-columns:1fr; }
       .footer-inner { flex-direction:column; gap:5px; }
     }
+
+    .project-item { align-items:start; }
+    .project-media { gap:24px 16px; align-items:start; }
+    .project-media figure,.drawing-gallery figure,.manufacturing-gallery figure { min-width:0; margin:0; }
+    .project-media .media-wide { grid-column:1/-1; }
+    .media-open { display:block; width:100%; min-width:0; padding:0; border:0; border-radius:0; overflow:hidden; background:transparent; color:inherit; cursor:zoom-in; }
+    .project-media .media-open,.drawing-gallery .media-open,.manufacturing-gallery .media-open { display:flex; aspect-ratio:4/3; align-items:flex-end; justify-content:flex-start; }
+    .media-open img { display:block; width:100%; height:100%; min-height:0; max-height:100%; object-fit:contain; object-position:left bottom; margin:0; background:transparent; }
+    .project-media .media-wide .media-open { display:block; aspect-ratio:auto; }
+    .project-media .media-wide img { height:auto; max-height:none; }
+    .project-media .media-photo img { object-fit:cover; object-position:center; }
+    #direct-lithium-extraction figure:nth-child(-n+2) .media-open { aspect-ratio:2/1; }
+    #direct-lithium-extraction figure:nth-child(2) img { object-position:center 65%; }
+    .media-open:hover { outline:1px solid var(--amber); outline-offset:3px; }
+    figcaption { margin:10px 0 0; color:var(--navy-soft); font-size:.74rem; line-height:1.45; }
+    figcaption a { text-underline-offset:2px; }
+    :focus-visible { outline:3px solid var(--amber); outline-offset:4px; }
+    .project-media--research { grid-template-columns:1fr; max-width:320px; }
+    .project-copy { min-width:0; }
+    .source-links { display:flex; flex-wrap:wrap; gap:8px 18px; margin:17px 0 0 !important; font-size:.78rem; }
+    .source-links a { color:var(--navy); text-underline-offset:3px; }
+    .collection-heading { margin:12px 0 20px; color:var(--amber); font-size:.78rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase; }
+    .drawing-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; align-items:start; }
+    .manufacturing-heading { margin-top:36px; padding-top:22px; border-top:1px solid var(--line); }
+    .manufacturing-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px 24px; align-items:start; }
+    .shop-work h4 { margin:0 0 14px; font-size:1.1rem; font-weight:500; }
+    .shop-work--card-holder { grid-column:1/-1; }
+    .card-holder-gallery { display:grid; grid-template-columns:minmax(0,1.3333fr) minmax(0,1.3333fr) minmax(0,.8161fr) minmax(0,1.3983fr); gap:24px; align-items:start; }
+    @media (min-width:1001px) {
+      .card-holder-gallery figure:nth-child(3) .media-open { aspect-ratio:488/598; }
+      .card-holder-gallery figure:nth-child(4) .media-open { aspect-ratio:1636/1170; }
+    }
+    .image-viewer { width:min(96vw,1420px); max-width:none; max-height:94vh; max-height:94svh; padding:16px; border:1px solid var(--navy); border-radius:0; color:var(--navy); background:var(--cream-light); }
+    .image-viewer::backdrop { background:rgba(8,16,28,.86); }
+    .viewer-toolbar { position:sticky; top:0; left:0; z-index:2; display:flex; justify-content:space-between; align-items:center; gap:15px; margin-bottom:12px; font-size:.78rem; background:var(--cream-light); }
+    .viewer-close { min-height:44px; padding:0 16px; border:1px solid var(--navy); border-radius:0; color:var(--cream); background:var(--navy); font:inherit; cursor:pointer; }
+    .viewer-image { display:block; width:auto; height:auto; max-width:100%; max-height:calc(94vh - 154px); max-height:calc(94svh - 154px); margin-inline:auto; object-fit:contain; background:transparent; }
+    .image-viewer.is-zoomed .viewer-image { max-width:none; max-height:none; margin-inline:0; }
+    .viewer-caption { margin:12px 0 0; font-size:.86rem; line-height:1.45; }
+    html.viewer-open { overflow:hidden; }
+    @media (max-width:1100px) {
+      .project-item { grid-template-columns:1fr; }
+      .project-media { max-width:600px; }
+      .project-media--research { max-width:320px; }
+    }
+    @media (max-width:1000px) { .drawing-gallery,.card-holder-gallery,.manufacturing-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:820px) {
+      .hero-meta { grid-template-columns:repeat(2,1fr); }
+      .project-media { width:100%; max-width:600px; }
+      .project-media--research { max-width:320px; }
+      .project-item { gap:22px; }
+    }
+    @media (max-width:600px) {
+      .nav-inner { display:grid; grid-template-columns:1fr; gap:7px; padding-block:10px; }
+      .nav-links { justify-content:space-between; flex-wrap:nowrap; gap:8px; }
+      .nav-links a,.nav-links a:nth-child(3),.nav-links a:nth-child(4) { display:inline; font-size:.64rem; letter-spacing:.025em; }
+      .hero-meta { grid-template-columns:1fr; }
+      section { scroll-margin-top:105px; }
+      .case-row { grid-template-columns:76px minmax(0,1fr); gap:9px; }
+      .case-row strong { font-size:.66rem; }
+      .drawing-gallery,.manufacturing-gallery,.card-holder-gallery { grid-template-columns:1fr; }
+      .drawing-gallery { gap:26px; }
+      .drawing-gallery .media-open,.manufacturing-gallery .media-open { display:block; aspect-ratio:auto; }
+      .drawing-gallery img,.manufacturing-gallery img { width:100%; height:auto; max-height:none; }
+      .shop-work--food-smasher .media-open { width:auto; height:230px; }
+      .shop-work--food-smasher img { width:auto; height:100%; max-width:100%; object-fit:contain; object-position:left bottom; }
+      .image-viewer { padding:10px; }
+    }
+    @media (max-width:600px) { #direct-lithium-extraction .project-media { grid-template-columns:1fr; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .button { transition:none; } }
   </style>
 </head>
 <body>
@@ -168,7 +239,7 @@
       <div class="hero-copy">
         <p class="eyebrow">Mechanical Engineering Student · CSULB</p>
         <h1>Aly Sadek</h1>
-        <p class="intro">I’m a mechanical engineering student at California State University, Long Beach, with experience in design, manufacturing, project management, energy materials, experimental research, and data analysis. I’m expanding my technical range through hands-on projects, CAD, research, and internships, with a growing focus on energy systems and applied engineering.</p>
+        <p class="intro">I’m a mechanical engineering student at California State University, Long Beach, building my technical range through design, manufacturing, project management, research, and internships. Across these roles, I’ve combined rapid technical learning with disciplined work to contribute beyond my prior experience. My goal is to build the technical depth and leadership experience to take on increasingly complex engineering roles.</p>
         <div class="actions">
           <a class="button primary" href="#projects">Explore projects</a>
           <a class="button" href="mailto:Alyksadek@outlook.com">Email</a>
@@ -242,49 +313,7 @@
         <p>Projects are grouped by technical discipline. Expand a category to explore the work, methods, tools, and outcomes behind each project.</p>
       </div>
 
-      <div class="folder-list">
-        <details class="folder">
-          <summary><span class="folder-count">1</span><span class="folder-name">Mechanical Design &amp; Manufacturing</span><span class="folder-note">CAD · Drawings · GD&amp;T · Fabrication</span></summary>
-          <div class="folder-content">
-            <article class="project-item">
-              <div class="project-media"><div class="media-placeholder primary">Rocket hardware CAD render</div><div class="media-placeholder">Dimensioned drawing</div><div class="media-placeholder">3D-printed component</div></div>
-              <div class="project-copy"><p class="project-status">Documentation in progress</p><h3>Rocket Recovery Hardware — CAD + 3D Printing</h3><p>Case study covering the design, iteration, fabrication, and integration of recovery-system components for the Beach Launch Team.</p><div class="case-row"><strong>Problem</strong><span>Define the component need, interfaces, loads, packaging limits, and recovery-system constraints.</span></div><div class="case-row"><strong>Approach</strong><span>Add CAD workflow, design decisions, tolerances, material selection, print iterations, and fit checks.</span></div><div class="case-row"><strong>Outcome</strong><span>Add the manufactured component, validation evidence, changes made, and final system result.</span></div><div class="tags"><span class="tag">SolidWorks</span><span class="tag">GD&amp;T</span><span class="tag">3D Printing</span><span class="tag">Assembly</span></div></div>
-            </article>
-            <article class="project-item">
-              <div class="project-media"><div class="media-placeholder primary">Food smasher assembly</div><div class="media-placeholder">CAD / drawing</div><div class="media-placeholder">Finished build</div></div>
-              <div class="project-copy"><p class="project-status">Project placeholder</p><h3>Manufacturing Project — Food Smasher</h3><p>Reserved for the complete design-to-manufacturing story, supported by photographs and drawings.</p><div class="case-row"><strong>Problem</strong><span>Describe the required function and design constraints.</span></div><div class="case-row"><strong>Approach</strong><span>Add manufacturing processes, tooling, dimensioning, tolerance choices, and assembly steps.</span></div><div class="case-row"><strong>Outcome</strong><span>Add performance, inspection results, and lessons from fabrication.</span></div></div>
-            </article>
-            <article class="project-item">
-              <div class="project-media"><div class="media-placeholder primary">Card-holder plug drawing</div><div class="media-placeholder">Tolerance detail</div><div class="media-placeholder">Physical part</div></div>
-              <div class="project-copy"><p class="project-status">Project placeholder</p><h3>Card-Holder Plug — Drawings &amp; Tolerances</h3><p>Reserved for the technical drawing, dimensioning, tolerance stack-up, manufacturing, and inspection documentation.</p><div class="tags"><span class="tag">Engineering Drawings</span><span class="tag">GD&amp;T</span><span class="tag">Inspection</span></div></div>
-            </article>
-          </div>
-        </details>
-
-        <details class="folder">
-          <summary><span class="folder-count">2</span><span class="folder-name">Energy &amp; Petroleum Systems</span><span class="folder-note">Petroleum · MATLAB · Technical Research</span></summary>
-          <div class="folder-content">
-            <article class="project-item"><div class="project-media"><div class="media-placeholder primary">Research framework / system diagram</div><div class="media-placeholder">Verified source set</div><div class="media-placeholder">Engineering result</div></div><div class="project-copy"><p class="project-status">Project placeholder</p><h3>AI-Assisted Petroleum Engineering Research</h3><p>A future-forward engineering study emphasizing controlled AI use, source verification, transparent assumptions, and independent technical validation.</p><div class="case-row"><strong>Question</strong><span>Add the petroleum-engineering problem and practical importance.</span></div><div class="case-row"><strong>Controls</strong><span>Document prompts, source selection, calculation checks, failure modes, and human review.</span></div><div class="case-row"><strong>Finding</strong><span>Add validated results, limitations, and recommended next steps.</span></div></div></article>
-            <article class="project-item"><div class="project-media"><div class="media-placeholder primary">MATLAB topography map</div><div class="media-placeholder">Input dataset</div><div class="media-placeholder">Result plot</div></div><div class="project-copy"><p class="project-status">Project placeholder</p><h3>Petroleum Topography Analysis — MATLAB</h3><p>Reserved for terrain or subsurface-data processing, visualization, analysis method, and engineering interpretation.</p><div class="tags"><span class="tag">MATLAB</span><span class="tag">Data Visualization</span><span class="tag">Topography</span></div></div></article>
-          </div>
-        </details>
-
-        <details class="folder">
-          <summary><span class="folder-count">3</span><span class="folder-name">Modeling, Data &amp; Simulation</span><span class="folder-note">MATLAB · Excel · Statistics · Simulation</span></summary>
-          <div class="folder-content">
-            <article class="project-item"><div class="project-media"><div class="media-placeholder primary">Monte Carlo result</div><div class="media-placeholder">MATLAB plot</div><div class="media-placeholder">Excel model</div></div><div class="project-copy"><p class="project-status">Project placeholder</p><h3>Monte Carlo Engineering Simulation</h3><p>Reserved for uncertainty modeling, statistical interpretation, sensitivity analysis, and a decision supported by simulation results.</p><div class="case-row"><strong>Inputs</strong><span>Add variables, probability distributions, assumptions, and data sources.</span></div><div class="case-row"><strong>Method</strong><span>Add simulation architecture, convergence checks, and model verification.</span></div><div class="case-row"><strong>Decision</strong><span>Explain how the results support an engineering choice.</span></div><div class="tags"><span class="tag">MATLAB</span><span class="tag">Excel</span><span class="tag">Statistics</span><span class="tag">Simulation</span></div></div></article>
-            <article class="project-item"><div class="project-media"><div class="media-placeholder primary">UCR analysis figure</div><div class="media-placeholder">Raw / processed data</div><div class="media-placeholder">Comparison plot</div></div><div class="project-copy"><p class="project-status">Documentation in progress</p><h3>UCR Experimental Data Analysis</h3><p>Reserved for data cleaning, comparison methods, uncertainty, interpretation, and figures produced during the research internship.</p></div></article>
-          </div>
-        </details>
-
-        <details class="folder">
-          <summary><span class="folder-count">4</span><span class="folder-name">Materials &amp; Experimental Research</span><span class="folder-note">Batteries · DLE · Materials Characterization</span></summary>
-          <div class="folder-content">
-            <article class="project-item"><div class="project-media"><div class="media-placeholder primary">Battery-anode research figure</div><div class="media-placeholder">SEM micrograph</div><div class="media-placeholder">Cycling result</div></div><div class="project-copy"><p class="project-status">NSF MacREU research</p><h3>Hard-Carbon Anodes for Sodium-Ion Batteries</h3><p>Compared flake-like and spherical commercial hard carbons to connect particle morphology, physical characterization, and sodium-storage behavior.</p><div class="case-row"><strong>Methods</strong><span>SEM, TEM, Raman spectroscopy, XRD, electrochemical testing, and comparative analysis.</span></div><div class="case-row"><strong>Finding</strong><span>Spherical hard carbon showed stronger capacity retention, faster diffusion, and greater stability than flake-like samples.</span></div><div class="case-row"><strong>Output</strong><span>Presented at the UCR Symposium and SCCUR.</span></div></div></article>
-            <article class="project-item"><div class="project-media"><div class="media-placeholder primary">Direct-lithium-extraction apparatus</div><div class="media-placeholder">Process diagram</div><div class="media-placeholder">ICP-OES result</div></div><div class="project-copy"><p class="project-status">NSF MacREU research</p><h3>Direct Lithium Extraction from Synthetic Geothermal Brine</h3><p>Evaluated aluminum hydroxide as a host for lithium uptake while investigating reaction conditions, competing-ion selectivity, and lithium recovery.</p><div class="case-row"><strong>Method</strong><span>Screened mass ratios and temperatures, prepared chemical solutions, separated products, and prepared samples for ICP-OES.</span></div><div class="case-row"><strong>Goal</strong><span>Support more scalable domestic lithium-recovery methods for energy-storage supply chains.</span></div></div></article>
-          </div>
-        </details>
-      </div>
+      <div class="folder-list"><details class="folder"><summary><span class="folder-count">1</span><span class="folder-name">Mechanical Design &amp; CAD</span><span class="folder-note">SolidWorks · Recovery Hardware · Integration</span></summary><div class="folder-content"><article class="project-item" id="recovery-hardware"><div class="project-media "><figure class="media-wide"><button class="media-open" type="button" data-full="assets/projects/01-recovery-cad-exploded.png" data-caption="Exploded housing: component interfaces and assembly arrangement." aria-label="Enlarge: Exploded Theseus recovery housing showing the curved panel, internal frame, and outer shell"><img src="assets/projects/01-recovery-cad-exploded.png" width="1154" height="605" loading="lazy" decoding="async" alt="Exploded Theseus recovery housing showing the curved panel, internal frame, and outer shell"></button><figcaption>Exploded housing: component interfaces and assembly arrangement.</figcaption></figure><figure><button class="media-open" type="button" data-full="assets/projects/01-recovery-cad-assembly.png" data-caption="Housing assembly and removable shell." aria-label="Enlarge: Theseus recovery housing assembly beside its removable outer shell"><img src="assets/projects/01-recovery-cad-assembly.png" width="1076" height="640" loading="lazy" decoding="async" alt="Theseus recovery housing assembly beside its removable outer shell"></button><figcaption>Housing assembly and removable shell.</figcaption></figure><figure class="recovery-descent"><button class="media-open" type="button" data-full="assets/projects/01-theseus-dual-drogue-descent.jpg" data-caption="Theseus descending under its two drogues." aria-label="Enlarge: Theseus descending with both drogue parachutes deployed"><img src="assets/projects/01-theseus-dual-drogue-descent.jpg" width="1580" height="1800" loading="lazy" decoding="async" alt="Theseus descending with both drogue parachutes deployed"></button><figcaption>Theseus descending under its two drogues.</figcaption></figure><figure class="media-wide"><button class="media-open" type="button" data-full="assets/projects/01-theseus-road-recovery.jpg" data-caption="Recovered Theseus airframe laid out after the flight." aria-label="Enlarge: Theseus lying horizontally on the dirt road after recovery"><img src="assets/projects/01-theseus-road-recovery.jpg" width="2200" height="724" loading="lazy" decoding="async" alt="Theseus lying horizontally on the dirt road after recovery"></button><figcaption>Recovered Theseus airframe laid out after the flight.</figcaption></figure></div><div class="project-copy"><p class="project-status">Beach Launch Team · Theseus</p><h3>Theseus Recovery System &amp; Avionics Housing</h3><p>Redesigned recovery-system hardware for Theseus, taking the avionics housing through CAD iterations, fabrication, and integration before supporting the team’s launch deployment.</p><div class="case-row"><strong>Problem</strong><span>Fit recovery electronics and deployment hardware within the existing airframe while providing workable mounting interfaces and access for assembly.</span></div><div class="case-row"><strong>Approach</strong><span>Developed a modular housing with a separate support frame and removable shell. Iterated the mounting and pass-through features in SolidWorks, then carried the design into fabrication and assembly as part of the recovery-system modifications.</span></div><div class="case-row"><strong>Result</strong><span>During the three-day Friends of Amateur Rocketry deployment, a structural weak point failed at main-chute deployment. The oversized dual-drogue system still helped the team recover approximately 85% of the rocket intact.</span></div><div class="tags"><span class="tag">SolidWorks</span><span class="tag">Recovery design</span><span class="tag">3D printing</span><span class="tag">Fabrication</span><span class="tag">Integration</span></div></div></article></div></details><details class="folder"><summary><span class="folder-count">2</span><span class="folder-name">GD&amp;T &amp; Manufacturing</span><span class="folder-note">Drawings · Tolerancing · Machining · Fabrication</span></summary><div class="folder-content"><div class="work-collection" id="manufacturing-drawings"><h3 class="collection-heading">Engineering Drawings</h3><div class="drawing-gallery"><figure><button class="media-open" type="button" data-full="assets/projects/03-bracket-drawing-upscaled.png" data-caption="Bracket: bore, mounting-hole, and radius dimensioning." aria-label="Enlarge: Complete original bracket sheet with orthographic and isometric views, zones, dimensions, and radii"><img src="assets/projects/03-bracket-drawing-upscaled.png" width="3600" height="2791" loading="lazy" decoding="async" alt="Complete original bracket sheet with orthographic and isometric views, zones, dimensions, and radii"></button><figcaption>Bracket: bore, mounting-hole, and radius dimensioning.</figcaption></figure><figure><button class="media-open" type="button" data-full="assets/projects/03-truck-bed-drawing-upscaled.png" data-caption="Truck bed: wall thickness, radii, and section A–A." aria-label="Enlarge: Complete original T9 truck-bed drawing showing dimensions, section A–A, border, and title block"><img src="assets/projects/03-truck-bed-drawing-upscaled.png" width="3600" height="2341" loading="lazy" decoding="async" alt="Complete original T9 truck-bed drawing showing dimensions, section A–A, border, and title block"></button><figcaption>Truck bed: wall thickness, radii, and section A–A.</figcaption></figure><figure><button class="media-open" type="button" data-full="assets/projects/03-mirror-handle-drawing-upscaled.png" data-caption="Inspection-mirror handle: diameters, axial section, and datum reference." aria-label="Enlarge: Complete original inspection-mirror handle drawing with axial section, diameters, datum, border, and title block"><img src="assets/projects/03-mirror-handle-drawing-upscaled.png" width="3600" height="2299" loading="lazy" decoding="async" alt="Complete original inspection-mirror handle drawing with axial section, diameters, datum, border, and title block"></button><figcaption>Inspection-mirror handle: diameters, axial section, and datum reference.</figcaption></figure></div><h3 class="collection-heading manufacturing-heading">Manufacturing</h3><div class="manufacturing-gallery"><article class="shop-work shop-work--card-holder"><h4>Card Holder</h4><div class="card-holder-gallery"><figure><button class="media-open" type="button" data-full="assets/projects/03-card-holder-id-removed.png" data-caption="Card-holder fabrication: formed walls, corner construction, and card fit." aria-label="Enlarge: Two formed-metal card-holder components on the workbench, one holding a student card with its student number removed"><img src="assets/projects/03-card-holder-id-removed.png" width="1575" height="999" loading="lazy" decoding="async" alt="Two formed-metal card-holder components on the workbench, one holding a student card with its student number removed"></button><figcaption>Card-holder fabrication: formed walls, corner construction, and card fit.</figcaption></figure><figure><button class="media-open" type="button" data-full="assets/projects/03-card-holder-formed-cad.png" data-caption="Folded sheet-metal model." aria-label="Enlarge: Folded card-holder CAD model with raised walls and corner bend reliefs"><img src="assets/projects/03-card-holder-formed-cad.png" width="770" height="572" loading="lazy" decoding="async" alt="Folded card-holder CAD model with raised walls and corner bend reliefs"></button><figcaption>Folded sheet-metal model.</figcaption></figure><figure><button class="media-open" type="button" data-full="assets/projects/03-card-holder-flat-pattern.png" data-caption="Flat pattern with bend reliefs." aria-label="Enlarge: Card-holder sheet-metal flat pattern showing side flanges and round corner reliefs"><img src="assets/projects/03-card-holder-flat-pattern.png" width="488" height="598" loading="lazy" decoding="async" alt="Card-holder sheet-metal flat pattern showing side flanges and round corner reliefs"></button><figcaption>Flat pattern with bend reliefs.</figcaption></figure><figure><button class="media-open" type="button" data-full="assets/projects/03-card-holder-drawing.png" data-caption="Dimensioned flat pattern and formed views." aria-label="Enlarge: Original card-holder drawing sheet showing dimensions, flat pattern, formed view, section, and title block"><img src="assets/projects/03-card-holder-drawing.png" width="1636" height="1170" loading="lazy" decoding="async" alt="Original card-holder drawing sheet showing dimensions, flat pattern, formed view, section, and title block"></button><figcaption>Dimensioned flat pattern and formed views.</figcaption></figure></div></article><article class="shop-work shop-work--food-smasher"><h4>Food Smasher</h4><figure><button class="media-open" type="button" data-full="assets/projects/03-manual-lathe-setup.jpg" data-caption="Manual-lathe setup from manufacturing coursework." aria-label="Enlarge: Manual lathe with a workpiece and tooling set up in the manufacturing laboratory"><img src="assets/projects/03-manual-lathe-setup.jpg" width="1125" height="1500" loading="lazy" decoding="async" alt="Manual lathe with a workpiece and tooling set up in the manufacturing laboratory"></button><figcaption>Manual-lathe setup from manufacturing coursework.</figcaption></figure></article></div></div></div></details><details class="folder"><summary><span class="folder-count">3</span><span class="folder-name">Materials &amp; Experimental Research</span><span class="folder-note">Batteries · DLE · Materials Characterization</span></summary><div class="folder-content"><article class="project-item" id="direct-lithium-extraction"><div class="project-media project-media--compact"><figure><button class="media-open" type="button" data-full="assets/projects/05-lithium-aluminum-host-structure.jpg" data-caption="Li–Al host structure behind the lithium-retention hypothesis. Illustration used in the research poster." aria-label="Enlarge: Layered lithium-aluminum hydroxide structure illustrating the host mechanism investigated in the brine study"><img src="assets/projects/05-lithium-aluminum-host-structure.jpg" width="850" height="423" loading="lazy" decoding="async" alt="Layered lithium-aluminum hydroxide structure illustrating the host mechanism investigated in the brine study"></button><figcaption>Li–Al host structure behind the lithium-retention hypothesis. Illustration used in the research poster.</figcaption></figure><figure class="media-photo"><button class="media-open" type="button" data-full="assets/projects/05-dle-sample-preparation.jpg" data-caption="Sample preparation and separation during the brine experiments." aria-label="Enlarge: Laboratory sample preparation using a syringe alongside labeled centrifuge tubes"><img src="assets/projects/05-dle-sample-preparation.jpg" width="1179" height="1547" loading="lazy" decoding="async" alt="Laboratory sample preparation using a syringe alongside labeled centrifuge tubes"></button><figcaption>Sample preparation and separation during the brine experiments.</figcaption></figure><figure class="media-photo"><button class="media-open" type="button" data-full="assets/projects/05-dle-heating-stage.jpg" data-caption="Controlled heating of the prepared sample series." aria-label="Enlarge: Labeled brine samples inside a temperature-controlled laboratory oven"><img src="assets/projects/05-dle-heating-stage.jpg" width="1179" height="881" loading="lazy" decoding="async" alt="Labeled brine samples inside a temperature-controlled laboratory oven"></button><figcaption>Controlled heating of the prepared sample series.</figcaption></figure><figure class="media-photo"><button class="media-open" type="button" data-full="assets/projects/05-dle-ph-screening.jpg" data-caption="pH screening: changes in precipitation across the brine samples." aria-label="Enlarge: Prepared brine samples spanning pH 3 to 11 with visible differences in precipitation"><img src="assets/projects/05-dle-ph-screening.jpg" width="1800" height="1301" loading="lazy" decoding="async" alt="Prepared brine samples spanning pH 3 to 11 with visible differences in precipitation"></button><figcaption>pH screening: changes in precipitation across the brine samples.</figcaption></figure></div><div class="project-copy"><p class="project-status">MacREU · Separation Processes</p><h3>Direct Lithium Extraction from Synthetic Geothermal Brine</h3><p>Tested aluminum hydroxide as a lithium host, focusing on whether lithium could be retained while competing ions were separated from a synthetic geothermal brine.</p><div class="case-row"><strong>Problem</strong><span>Distinguish lithium retained in the host structure from competing ions removed by precipitation or surface adsorption.</span></div><div class="case-row"><strong>Method</strong><span>Prepared synthetic brine, adjusted pH to control iron precipitation, and varied host loading and temperature. Heated the mixtures, redispersed them in water, and centrifuged to separate solids from the supernatant. Prepared labeled samples for multi-element ICP-OES analysis.</span></div><div class="case-row"><strong>Result</strong><span>The initial host-loading screen gave similar responses, so two conditions were carried into dual-salt selectivity tests. Water washing and ICP-OES were the next steps to distinguish removable Na and K from lithium retained in the Li–Al layered-double-hydroxide host.</span></div><div class="tags"><span class="tag">Experimental design</span><span class="tag">Brine chemistry</span><span class="tag">Separation</span><span class="tag">ICP-OES</span><span class="tag">Data analysis</span></div><p class="source-links"><a href="assets/documents/macreu-research-poster.pdf" target="_blank" rel="noreferrer">Research poster</a></p></div></article><article class="project-item" id="hard-carbon-anodes"><div class="project-media project-media--research"><figure class="media-wide"><button class="media-open" type="button" data-full="assets/projects/04-hard-carbon-sem.jpg" data-caption="Particle morphology: flake-like carbons versus spherical MSE." aria-label="Enlarge: SEM micrographs comparing flake-like TYPE2 and BSHC320 particles with spherical MSE carbon"><img src="assets/projects/04-hard-carbon-sem.jpg" width="992" height="532" loading="lazy" decoding="async" alt="SEM micrographs comparing flake-like TYPE2 and BSHC320 particles with spherical MSE carbon"></button><figcaption>Particle morphology: flake-like carbons versus spherical MSE.</figcaption></figure><figure class="media-wide media-raman"><button class="media-open" type="button" data-full="assets/projects/04-hard-carbon-raman.png" data-caption="Raman spectra: differences in the carbon structure." aria-label="Enlarge: Raman spectra comparing the D and G regions of MSE, TYPE, and Battery carbon"><img src="assets/projects/04-hard-carbon-raman.png" width="858" height="715" loading="lazy" decoding="async" alt="Raman spectra comparing the D and G regions of MSE, TYPE, and Battery carbon"></button><figcaption>Raman spectra: differences in the carbon structure.</figcaption></figure></div><div class="project-copy"><p class="project-status">MacREU · Energy Materials</p><h3>Hard-Carbon Anodes for Sodium-Ion Batteries</h3><p>Investigated how hard-carbon particle morphology and structure affect sodium storage, comparing flake-like commercial powders with spherical MSE carbon.</p><div class="case-row"><strong>Problem</strong><span>Separate limitations associated with carbon particle structure from those introduced during electrode fabrication.</span></div><div class="case-row"><strong>Method</strong><span>Compared SEM morphology and Raman/XRD structure with charge–discharge behavior. Varied binder, loading, and electrode thickness to test whether fabrication changes could overcome the flake-carbon capacity limit.</span></div><div class="case-row"><strong>Finding</strong><span>Flake electrodes remained near 0.5 mAh despite fabrication changes, with storage dominated by surface interactions. The poster’s spherical MSE results showed more stable cycling, making particle morphology a priority for further anode development.</span></div><div class="tags"><span class="tag">SEM</span><span class="tag">Raman</span><span class="tag">XRD</span><span class="tag">Electrochemical analysis</span></div><p class="source-links"><a href="assets/documents/macreu-research-poster.pdf" target="_blank" rel="noreferrer">Research poster</a></p></div></article></div></details><details class="folder"><summary><span class="folder-count">4</span><span class="folder-name">Energy &amp; Petroleum Systems</span><span class="folder-note">Petroleum · Thermal Analysis · Technical Research</span></summary><div class="folder-content"><article class="project-item" id="petroleum-basin-study"><div class="project-media "><figure class="media-wide"><button class="media-open" type="button" data-full="assets/projects/02-basin-seismic-cross-section.jpg" data-caption="Seismic evidence used to examine fault-controlled migration and trapping." aria-label="Enlarge: Published seismic section and interpreted faults beneath the Eel forearc basin"><img src="assets/projects/02-basin-seismic-cross-section.jpg" width="796" height="500" loading="lazy" decoding="async" alt="Published seismic section and interpreted faults beneath the Eel forearc basin"></button><figcaption>Seismic evidence used to examine fault-controlled migration and trapping. <a href="https://www.usgs.gov/media/images/cross-sections-southern-cascadia-margin-showing-subsurface-structure-outer-arc-high" target="_blank" rel="noreferrer">Rudebusch et al. (2023), USGS.</a></figcaption></figure><figure class="media-wide"><button class="media-open" type="button" data-full="assets/projects/02-basin-thermal-profile.png" data-caption="Temperature-depth measurements used to test the geothermal interpretation." aria-label="Enlarge: Temperature-depth plot from ODP Hole 1019C showing shallow measurements and the published thermal gradient"><img src="assets/projects/02-basin-thermal-profile.png" width="1503" height="969" loading="lazy" decoding="async" alt="Temperature-depth plot from ODP Hole 1019C showing shallow measurements and the published thermal gradient"></button><figcaption>Temperature-depth measurements used to test the geothermal interpretation.</figcaption></figure></div><div class="project-copy"><p class="project-status">Petroleum Reservoir Engineering</p><h3>California Petroleum Systems &amp; Thermal Basin Study</h3><p>Assessed petroleum trapping, migration pathways, and geothermal potential in the Eel River and Point Arena basins through an AI-assisted research workflow.</p><div class="case-row"><strong>Method</strong><span>Connected source rocks, reservoirs, seals, and deformation history using surveys, drilling records, and research papers. Used AI to accelerate research and drafting, then checked the claims against original sources and documented corrections.</span></div><div class="case-row"><strong>Finding</strong><span>Faults could create traps and also breach them: seepage supported migration, while offshore charge timing and trap preservation remained uncertain. Shallow temperature data established a thermal baseline, but did not demonstrate a productive geothermal reservoir.</span></div><div class="tags"><span class="tag">Petroleum systems</span><span class="tag">Technical synthesis</span><span class="tag">AI-assisted research</span><span class="tag">Source verification</span></div><p class="source-links"><a href="assets/documents/petroleum-basin-study.pdf" target="_blank" rel="noreferrer">Technical report</a><a href="assets/documents/petroleum-evidence-appendix.pdf" target="_blank" rel="noreferrer">Source audit</a></p></div></article></div></details></div>
     </section>
 
     <section id="coursework" class="horizontal-section">
@@ -310,12 +339,45 @@
   </main>
 
   <footer><div class="wrap footer-inner"><span>© 2026 Aly Sadek</span><span>Mechanical Engineering Portfolio</span></div></footer>
+
+  <dialog class="image-viewer" id="image-viewer" aria-label="Project image" aria-describedby="viewer-caption">
+    <div class="viewer-toolbar"><a id="viewer-download" href="#" download>Download image</a><button class="viewer-close viewer-zoom" type="button" aria-pressed="false">Actual size</button><button class="viewer-close" type="button" autofocus>Close</button></div>
+    <img class="viewer-image" id="viewer-image" alt="">
+    <p class="viewer-caption" id="viewer-caption"></p>
+  </dialog>
   <script>
     window.addEventListener("pageshow", () => {
       document.querySelectorAll("details.folder").forEach((folder) => {
         folder.open = false;
       });
     });
+
+    const imageViewer = document.getElementById("image-viewer");
+    const viewerImage = document.getElementById("viewer-image");
+    const viewerCaption = document.getElementById("viewer-caption");
+    const viewerDownload = document.getElementById("viewer-download");
+    const viewerZoom = imageViewer.querySelector(".viewer-zoom");
+    viewerZoom.addEventListener("click", () => {
+      const zoomed = imageViewer.classList.toggle("is-zoomed");
+      viewerZoom.setAttribute("aria-pressed", String(zoomed));
+      viewerZoom.textContent = zoomed ? "Fit image" : "Actual size";
+    });
+    document.querySelectorAll("[data-full]").forEach((control) => {
+      control.addEventListener("click", () => {
+        viewerImage.src = control.dataset.full;
+        viewerImage.alt = control.querySelector("img")?.alt || control.dataset.caption;
+        viewerCaption.textContent = control.dataset.caption;
+        viewerDownload.href = control.dataset.full;
+        imageViewer.classList.remove("is-zoomed");
+        viewerZoom.setAttribute("aria-pressed", "false");
+        viewerZoom.textContent = "Actual size";
+        imageViewer.showModal();
+        document.documentElement.classList.add("viewer-open");
+      });
+    });
+    imageViewer.querySelector(".viewer-close:not(.viewer-zoom)").addEventListener("click", () => imageViewer.close());
+    imageViewer.addEventListener("click", (event) => { if (event.target === imageViewer) imageViewer.close(); });
+    imageViewer.addEventListener("close", () => document.documentElement.classList.remove("viewer-open"));
   </script>
 </body>
 </html>
